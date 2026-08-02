@@ -29,8 +29,5 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     BUILD_PRODUCT=troika \
     TARGET_DEVICE=troika
 
-# The updater (update_engine_sideload) checks ro.product.device against the
-# OTA metadata "pre-device" list (troika,one_action) - both pass.
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.product.device=one_action \
-    ro.product.model="motorola one action"
+# ro.product.device=troika (from PRODUCT_DEVICE) passes the update_engine
+# "pre-device" check against the OTA metadata list "troika,one_action".

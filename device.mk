@@ -42,7 +42,3 @@ PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-service \
     android.hardware.keymaster@3.0-service \
     android.hardware.gatekeeper@1.0-service
-
-# VINTF fragments
-DEVICE_MANIFEST_FILE := $(PLATFORM_PATH)/recovery/root/vendor/etc/vintf/manifest.xml
-DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := $(PLATFORM_PATH)/recovery/root/vendor/compatibility_matrix.xml
