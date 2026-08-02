@@ -129,6 +129,9 @@ TW_INCLUDE_FBE_METADATA_DECRYPT := true
 # TWRP
 TW_THEME := portrait_hdpi
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/backlight_0/brightness"
+# max brightness for the panel; TWRP 14.1's minuitwrp needs this defined
+# (Soong passes -DTW_MAX_BRIGHTNESS= which breaks the code when empty)
+TW_MAX_BRIGHTNESS := 2047
 TW_DEFAULT_BRIGHTNESS := 80
 TW_NO_SCREEN_BLANK := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
