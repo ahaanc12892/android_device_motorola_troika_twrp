@@ -23,6 +23,14 @@ PRODUCT_PACKAGES += \
     update_engine \
     update_engine_sideload
 
+# The TWRP recovery binary. Its TWRP_REQUIRED_MODULES chain pulls in the
+# full recovery toolchain (twrp, minadbd, toybox, toolbox, servicemanager,
+# hwservicemanager, keystore2, linker64, fs tools, health HAL, ...) into
+# the recovery ramdisk. On AOSP 14+ "optional" modules are no longer
+# default-installed, so this MUST be listed explicitly.
+PRODUCT_PACKAGES += \
+    recovery
+
 # Boot control HAL - the HIDL android.hardware.boot@1.0-service (prebuilt in
 # recovery/root/system/bin) provides slot control to update_engine_sideload via
 # libboot_control_client; bootctrl.exynos9610 is the legacy hw_get_module path.

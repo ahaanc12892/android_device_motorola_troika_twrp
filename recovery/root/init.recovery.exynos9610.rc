@@ -73,8 +73,8 @@ service servicemanager /sbin/servicemanager
     disabled
     seclabel u:r:recovery:s0
 
-# keystore is started and stopped on demand by TWRP
-service keystore /sbin/keystore /tmp/misc/keystore
+# keystore2 is started and stopped on demand by TWRP (A14: keystore2 replaces keystore)
+service keystore2 /sbin/keystore2 /tmp/misc/keystore
     user root
     group root drmrpc readproc
     disabled
@@ -105,5 +105,5 @@ on property:crypto.ready=0
     stop keymaster-3-0
     stop gatekeeper-1-0
     stop hwservicemanager
-    stop keystore
+    stop keystore2
     stop servicemanager
