@@ -71,6 +71,8 @@ BOARD_SECOND_OFFSET := 0x00000000
 BOARD_KERNEL_TAGS_OFFSET := 0x00000000
 BOARD_BOOT_HEADER_VERSION := 1
 BOARD_MKBOOTIMG_ARGS += --kernel_offset $(BOARD_KERNEL_OFFSET) --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --second_offset $(BOARD_SECOND_OFFSET) --tags_offset $(BOARD_KERNEL_TAGS_OFFSET) --header_version $(BOARD_BOOT_HEADER_VERSION)
+# Match the os_version stamped in the LineageOS 23.2 boot image header (Android 16)
+BOARD_MKBOOTIMG_ARGS += --os_version 16.0.0 --os_patch_level 2026-07-01
 
 # Partitions (from LineageOS common tree)
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864

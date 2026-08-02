@@ -16,11 +16,17 @@ SHRP / omni-9 device tree, which suffered from:
   `update_engine_sideload` that installs Android 16 payload OTAs (LineageOS 23.2)
 * **A/B installs**: payload.bin installs via update_engine + bootctrl.exynos9610
   HAL (built from source, HIDL boot@1.0 service included)
+* **Recovery-as-boot**: troika has **no physical recovery partition** — the
+  built `recovery.img` is a boot-format image (kernel + TWRP ramdisk + DTB in
+  the `second` section) flashed to the boot partition. Verified against the
+  LineageOS 23.2 payload: partitions are `boot, bootloader, dtbo, keystorage,
+  ldfw, logo, modem, system, vbmeta, vendor` (static A/B, no super).
 * **Decryption**: stock keymaster 3.0 / gatekeeper 1.0 / Mobicore TEE blobs
   (identical to what stock Android 11 ships), prepdecrypt.sh, FBE v1 + v2 and
   metadata-decrypt support (vold fscrypt v2 path)
-* **Kernel/DTB**: prebuilt from the LineageOS 23.2 boot image (kernel 4.14,
-  Mobicore TEE driver included), DTB carried in the `second` section
+* **Kernel/DTB**: prebuilt from the LineageOS 23.2 payload's boot image
+  (kernel 4.14, Mobicore TEE driver included, header os_version 16.0.0), DTB
+  carried in the `second` section
 * **Working features**: MTP/ADB (configfs gadget), brightness control, haptics
   firmware (aw8695), backup/restore for efs/persist/persist2/modem/logo/oem,
   NTFS/OTG/SD support, repack tools, extra languages, logcat
