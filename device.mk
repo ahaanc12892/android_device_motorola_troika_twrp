@@ -31,6 +31,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     recovery
 
+# The recovery ramdisk needs the dynamic linker at /system/bin/linker64;
+# without it no recovery binary can exec. Soong only emits its recovery
+# install when the module is default-installed.
+PRODUCT_PACKAGES += \
+    linker64
+
 # Boot control HAL - the HIDL android.hardware.boot@1.0-service (prebuilt in
 # recovery/root/system/bin) provides slot control to update_engine_sideload via
 # libboot_control_client; bootctrl.exynos9610 is the legacy hw_get_module path.
