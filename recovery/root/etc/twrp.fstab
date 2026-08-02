@@ -3,7 +3,7 @@
 
 /boot            emmc   /dev/block/bootdevice/by-name/boot       flags=slotselect
 /dtbo            emmc   /dev/block/bootdevice/by-name/dtbo       flags=backup=1;display="Dtbo";slotselect
-/data            f2fs   /dev/block/bootdevice/by-name/userdata   flags=fileencryption=aes-256-xts;reservedsize=128M;display="Data";wipeingui
+/data            f2fs   /dev/block/bootdevice/by-name/userdata   flags=fileencryption=aes-256-xts;reservedsize=128M;display="Data";wipeingui;keydirectory=/metadata/vold/keys
 /misc            emmc   /dev/block/bootdevice/by-name/misc
 /system          ext4   /dev/block/bootdevice/by-name/system     flags=slotselect;display="System"
 /system_image    emmc   /dev/block/bootdevice/by-name/system     flags=slotselect
