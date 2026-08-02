@@ -37,8 +37,14 @@ PRODUCT_STATIC_BOOT_CONTROL_HAL := \
 PRODUCT_PACKAGES += \
     bootctrl.exynos9610
 
-# HAL services for decryption + A/B, built from the android-14.1 tree
+# HIDL interface libs required by the prebuilt HAL service binaries
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.0-service \
-    android.hardware.keymaster@3.0-service \
-    android.hardware.gatekeeper@1.0-service
+    android.hardware.boot@1.0 \
+    android.hardware.keymaster@3.0 \
+    android.hardware.gatekeeper@1.0
+
+# NOTE: the keymaster/gatekeeper/boot HAL *service binaries* are prebuilt
+# (recovery/root/system/bin) from stock Android 9/11 - they load the
+# hardware (TEE-backed) impl libraries. Building android.hardware.keymaster@3.0-service
+# from AOSP source would yield the SOFTWARE keymaster, which cannot unwrap
+# keys protected by the TrustZone TEE.
