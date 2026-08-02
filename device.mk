@@ -20,20 +20,12 @@ PRODUCT_PLATFORM := exynos9610
 
 # A/B support - update_engine_sideload handles payload.bin (full OTA) installs
 PRODUCT_PACKAGES += \
-    otapreopt_script \
-    cppreopts.sh \
     update_engine \
-    update_engine_sideload \
-    update_verifier
+    update_engine_sideload
 
-# Enable update engine sideloading by including the static version of the
-# boot_control HAL and its dependencies.
-PRODUCT_STATIC_BOOT_CONTROL_HAL := \
-    bootctrl.exynos9610 \
-    libz \
-    libcutils
-
-# Boot control HAL (legacy hw_get_module path used as fallback)
+# Boot control HAL - the HIDL android.hardware.boot@1.0-service (prebuilt in
+# recovery/root/system/bin) provides slot control to update_engine_sideload via
+# libboot_control_client; bootctrl.exynos9610 is the legacy hw_get_module path.
 PRODUCT_PACKAGES += \
     bootctrl.exynos9610
 
